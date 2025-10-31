@@ -10,6 +10,14 @@
   <link rel = "stylesheet" href = "styles.css">
   <title>Frontend Mentor | Weather app</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
@@ -26,35 +34,46 @@
       <img src = "./assets/images/icon-dropdown.svg"/>
     
       <div class = "hidden" id = "unit-board">
-        <p>Switch to Imperial/Metric</p>
+        <p>Switch to Imperial</p>
 
-        <p>Temperature</p>
-
-        <input id = "label-celcius" type = "radio" name = "temperature" value = "temperature-celcius">
-        <label for="label-celcius">Celsius (°C)</label>
-        <br>
-        <input id = "label-fahrenheit" type = "radio" name = "temperature" value = "temperature-fahrenheit">
-        <label for="label-fahrenheit">Fahrenheit (°F)</label>
+        <p class = "sub-text">Temperature</p>
+        <input required checked  id = "label-celcius" type = "radio" name = "temperature" value = "temperature-celcius">
+        <div class = "label-ctn">
+          <label for="label-celcius">Celsius (°C)</label>
+        </div>
+        <input required id = "label-fahrenheit" type = "radio" name = "temperature" value = "temperature-fahrenheit">
+        <div class = "label-ctn">
+          <label for="label-fahrenheit">Fahrenheit (°F)</label>
+        </div>
         
+        <hr>
 
-        <p>Wind Speed</p>
-        <input id = "label-km/h" type = "radio" name = "wind-speed" value = "wind-speed-km/h">
-        <label for="label-km/h">km/h</label>
-        <br>
-        <input id = "label-mph" type = "radio" name = "wind-speed" value = "wind-speed-mph">
-        <label for="label-mph">mph</label>
+        <p class = "sub-text">Wind Speed</p>
+        <input required checked id = "label-km/h" type = "radio" name = "wind-speed" value = "wind-speed-km/h">
+        <div class = "label-ctn">
+          <label for="label-km/h">km/h</label>
+        </div>
+        <input required id = "label-mph" type = "radio" name = "wind-speed" value = "wind-speed-mph">
+        <div class = "label-ctn">
+          <label for="label-mph">mph</label>
+        </div>
         
-        Precipitation
+        <hr>
 
-        Millimeters (mm)
-        Inches (in)
+        <p class = "sub-text">Precipitation</p>
+
+        <input required checked id = "label-milimeters" type = "radio" name = "precipitation" value = "precipitation-mm">
+        <div class = "label-ctn">
+          <label for="label-milimeters">Millimeters (mm)</label>
+        </div>
+        <input required id = "label-inches" type = "radio" name = "precipitation" value = "precipitation-inch">
+        <div class = "label-ctn">
+          <label for="label-inches">Inches (in)</label>
+        </div>
+        
       </div>
     </button>
   </nav>
-
-  
-
-  
 
   <h1>How's the sky looking today?</h1>
 
@@ -82,18 +101,22 @@
       <div class = "card-wrapper">
         <div class = "card">
           Feels like
+          <p class = "temperature-text">10</p>
           <!-- Insert temperature here -->
         </div>
         <div class = "card">
           Humidity
+          <p class = "humidity-text">10</p>
           <!-- Insert humidity here -->
         </div>
         <div class = "card">
           Wind
+          <p class = "wind-speed-text">10</p>
           <!-- Insert wind here -->   
         </div>
         <div class = "card">
           Precipitation
+          <p class = "precipitation-text">10</p>
           <!-- Insert precipitation here -->
 
         </div>
@@ -173,9 +196,12 @@
             </span>
           </div>
         </div>
+        
+
 
       </div>
     </div>
+    
     <div id = "hourly-forecast">
       <div id = "hourly-forecast-ctn">
         <div id = "hourly-forecast-top">
@@ -183,6 +209,7 @@
           <button id = "forecast-day-btn">Monday <img src = "./assets/images/icon-dropdown.svg"/></button>
         </div>
         <div id = "hourly-forecast-content">
+          
           <div class = "hour-card">
             <div class = "hour-card-content">
               <span class = "weather-text">
@@ -273,100 +300,19 @@
               <p class = "temperature-text">20</p>
             </div>
           </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
 
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
-  
-  
+
+  </div>
 
   
   
-
   
-
-
+  
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 

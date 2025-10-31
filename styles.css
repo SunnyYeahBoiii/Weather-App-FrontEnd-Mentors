@@ -5,6 +5,13 @@
     --btn-clr-lighter-lighter: hsl(243, 23%, 30%);
     --blue: hsl(248, 70%, 36%);
     --blue-lighter: hsl(233, 67%, 56%);
+    --width: min(1000px , 90vw)
+}
+
+* {
+    font-family: DM Sans , sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 html{
@@ -16,15 +23,19 @@ html{
     font-size: 18px;
 }
 
+h1{
+    margin: 5%;
+}
+
 nav{
     display: flex;
     justify-content: space-between;
-    width: 90vw;
+    width: var(--width);
     margin: 0 auto;
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 #unit-btn{
@@ -41,14 +52,86 @@ nav{
 #unit-board{
     cursor: auto;
     position: absolute;
-    top: 60px;
-    right: 5vw;
+    
+    /* top: 60px;
+    right: 5vw; */
+    transform: translate(-50% , 5%);
+
+
     width: 200px;
     height: 400px;
-    background-color: var(--btn-clr-lighter);
+    padding: 10px 0px;
+    background-color: var(--btn-clr);
+    border: 1px solid var(--btn-clr-lighter-lighter);
+    border-radius: 10px;
     z-index: 1;
     text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+#unit-board *{
+    margin-left: 15px;
+}
+
+#unit-board label{
+    margin-left: 5px;
+}
+
+.sub-text{
+    color: hsl(240, 6%, 70%);
+    font-size: 0.75rem;
+}
+
+#unit-board hr{
+    background-color: var(--btn-clr-lighter);
+    border: none;
+    height: 2px;
+    width: 90%;
+}
+
+input[type="radio"]{
+    appearance: none;
+
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#unit-board input + .label-ctn{
+    /* margin-left: 0px; */
+    padding: 5px;
+    padding-left: 0px;
+}
+
+#unit-board input:checked + .label-ctn{
+    width: 90%;
+    margin-left: auto !important; 
+    margin-right: auto !important;
+    text-align: left;
+    border-radius: 5px;
+    background-color: var(--btn-clr-lighter-lighter);
+    margin-left: 0px;
+}
+
+#unit-board input:checked + .label-ctn label{
+    margin-left: 12.5px;
+}
+
+#unit-board input:checked + .label-ctn::after{
+    content: url(./assets/images/icon-checkmark.svg);
+    position: absolute;
+    right: 0;
+    transform: translateX(-100%);
+}
+
 
 h1{
     text-align: center;
@@ -60,7 +143,7 @@ h1{
 }
 
 #search-bar{
-    width: 600px;
+    width: min(600px , 80vw);
     height: 40px;
     background-color: var(--btn-clr);
     outline: none;
@@ -85,7 +168,7 @@ h1{
     display: grid;
     margin: 10px auto;
     height: 60vh;
-    width: 90vw;
+    width: var(--width);
     gap: 2%;
     grid-template-columns: 60% 35%;
     grid-template-rows: 45% 15% 7.5% 25%;
@@ -134,7 +217,9 @@ h1{
 }
 
 #today-detail .card{
-    width: 22.5%;
+    width: 20%;
+    padding-left: 1.275%;
+    padding-right: 1.275%;
 }
 
 .card{
@@ -198,15 +283,29 @@ h1{
     font-size: 0.75rem;
 }
 
-.card-temperature p:nth-child(2){
-    margin-right: 0.3rem;
-}
-
 .temperature-text::after{
     content: "o";
     font-size: 0.5rem;
     position: relative;
     top: -0.5rem;
+}
+
+.humidity-text::after{
+    content: "%";
+    font-size: 1rem;
+    position: absolute;
+}
+
+.wind-speed-text::after{
+    content: "km/h";
+    font-size: 1rem;
+    position: absolute;
+}
+
+.precipitation-text::after{
+    content: "mm";
+    font-size: 1rem;
+    position: absolute;
 }
 
 #hourly-forecast{
@@ -223,7 +322,6 @@ h1{
 #left-text{
     margin-left: 10px;
 }
-
 
 /* This is the content added while on school */
 
@@ -320,3 +418,6 @@ h1{
 }
 
 /*-------------------------------------------*/
+
+
+
