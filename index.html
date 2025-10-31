@@ -87,11 +87,12 @@
       <div id = "board">
         <div id = "board-inner-text">
           <span id = "board-left-text">
-            <p>Text</p>
-            <p>Text</p>
+            <p>Berlin, Germany</p>
+            <p>Tuesday, Aug 5, 2025</p>
           </span>
           <span id = "board-right-text">
-            <p>Text</p>
+            <img style="width: 100px; height: 100px;" src = "./assets/images/icon-sunny.webp"/>
+            <p id = "right-text">20</p>
           </span>
         </div>
       </div>
@@ -206,7 +207,39 @@
       <div id = "hourly-forecast-ctn">
         <div id = "hourly-forecast-top">
           Hourly forecast
-          <button id = "forecast-day-btn">Monday <img src = "./assets/images/icon-dropdown.svg"/></button>
+          <div style = "position: relative;">
+            <button id = "forecast-day-btn">Monday <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/></button>
+            <div class = "hidden" id = "day-of-the-week-board">
+              <input checked type = "radio" name = "forecast-day" id = "forecast-monday" value = "forecast-day-monday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-monday">Monday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-tuesday" value = "forecast-day-tuesday"/>
+              <div class = "label-ctn">
+              <label for = "forecast-tuesday">Tuesday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-wednesday" value = "forecast-day-wednesday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-wednesday">Wednesday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-thursday" value = "forecast-day-thursday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-thursday">Thursday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-friday" value = "forecast-day-friday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-friday">Friday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-saturday" value = "forecast-day-saturday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-saturday">Saturday</label>
+              </div>
+              <input type = "radio" name = "forecast-day" id = "forecast-sunday" value = "forecast-day-sunday"/>
+              <div class = "label-ctn">
+                <label for = "forecast-sunday">Sunday</label>
+              </div>
+            </div>
+          </div>
         </div>
         <div id = "hourly-forecast-content">
           
@@ -290,16 +323,7 @@
               <p class = "temperature-text">20</p>
             </div>
           </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
+          
 
         </div>
       </div>
