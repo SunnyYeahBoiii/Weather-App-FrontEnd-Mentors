@@ -8,6 +8,8 @@
   
   <script defer src = "script.js"></script>
   <link rel = "stylesheet" href = "styles.css">
+  <link rel = "stylesheet" href = "responsive.css">
+  <link rel = "stylesheet" href = "skeleton.css">
   <title>Frontend Mentor | Weather app</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,8 +80,15 @@
   <h1>How's the sky looking today?</h1>
 
   <div id = "search-area">
-    <input id = "search-bar" placeholder="Search for a city, e.g., New York">
-    <button id = "search-btn">Search</button>
+    <div id = "search-ctn">
+
+      <input id = "search-bar" placeholder="Search for a city, e.g., New York">
+      <button type = "button" id = "search-btn">Search</button>
+
+      <div id = "search-result" class = "hidden">  
+        <h2>Nothing to see here..</h2>
+      </div>
+    </div>
   </div>
 
   <div id = "weather-detail">
@@ -126,79 +135,6 @@
     <p id = "daily-forecast-text">Daily Forecast</p>
     <div id = "daily-forecast">
       <div class = "card-wrapper">
-        
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        <div class = "card">
-          <div class = "card-content">
-            <p class = "day-of-the-week">Mon</p>
-            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
-            <span class = "card-temperature">
-              <p class = "temperature-text">20</p>
-              <p class = "temperature-text">14</p>
-            </span>
-          </div>
-        </div>
-        
-
 
       </div>
     </div>
@@ -242,88 +178,6 @@
           </div>
         </div>
         <div id = "hourly-forecast-content">
-          
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          <div class = "hour-card">
-            <div class = "hour-card-content">
-              <span class = "weather-text">
-                <img class = "weather-icon" src = "assets/images/icon-overcast.webp"/>
-                <p>0AM</p>
-              </span>
-
-              <p class = "temperature-text">20</p>
-            </div>
-          </div>
-          
 
         </div>
       </div>
