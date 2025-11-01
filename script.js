@@ -20,3 +20,10 @@ dayOfTheWeekBtn.addEventListener("click" , function(event){
 dayOfTheWeekBoard.addEventListener("click" , function(event){
     event.stopPropagation();
 });
+
+window.addEventListener("click" , () => {
+    if(!unitBoard.classList.contains("hidden"))
+        unitBoard.classList.toggle("hidden");
+    if(!dayOfTheWeekBoard.classList.contains("hidden"))
+        dayOfTheWeekBoard.classList.toggle("hidden");
+})

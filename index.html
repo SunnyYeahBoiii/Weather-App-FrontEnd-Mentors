@@ -6,7 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
-  <script src = "script.js" defer></script>
+  <script defer src = "script.js"></script>
   <link rel = "stylesheet" href = "styles.css">
   <title>Frontend Mentor | Weather app</title>
 
@@ -91,7 +91,7 @@
             <p>Tuesday, Aug 5, 2025</p>
           </span>
           <span id = "board-right-text">
-            <img style="width: 100px; height: 100px;" src = "./assets/images/icon-sunny.webp"/>
+            <img class = "board-icon" src = "./assets/images/icon-sunny.webp"/>
             <p id = "right-text">20</p>
           </span>
         </div>
@@ -101,25 +101,24 @@
     <div id = "today-detail">
       <div class = "card-wrapper">
         <div class = "card">
-          Feels like
-          <p class = "temperature-text">10</p>
-          <!-- Insert temperature here -->
+          <p class = "sub-text">Feels like</p>
+          <p class = "temperature-text big-text">10</p>
         </div>
         <div class = "card">
-          Humidity
-          <p class = "humidity-text">10</p>
+          <p class = "sub-text">Humidity</p>
+          <p class = "humidity-text big-text">10</p>
           <!-- Insert humidity here -->
         </div>
         <div class = "card">
-          Wind
-          <p class = "wind-speed-text">10</p>
+          <p class = "sub-text">Wind</p>
+          <p class = "wind-speed-text big-text">10</p>
           <!-- Insert wind here -->   
         </div>
         <div class = "card">
-          Precipitation
-          <p class = "precipitation-text">10</p>
+          <p class = "sub-text">Precipitation</p>
+          <p class = "precipitation-text big-text">10</p>
           <!-- Insert precipitation here -->
-
+  
         </div>
       </div>
     </div>
@@ -127,6 +126,7 @@
     <p id = "daily-forecast-text">Daily Forecast</p>
     <div id = "daily-forecast">
       <div class = "card-wrapper">
+        
         <div class = "card">
           <div class = "card-content">
             <p class = "day-of-the-week">Mon</p>
