@@ -36,10 +36,6 @@ nav{
     margin-top: 2vh;
 }
 
-.hidden{
-    display: none !important;
-}
-
 #unit-btn{
     background-color: var(--btn-clr);
     border-radius: 3px;
@@ -181,7 +177,8 @@ h1{
 
 #search-result{
     position: absolute;
-    height: 240px;
+    min-height: 50px;
+    max-height: 240px;
     width: min(600px , 70vw);
     left: 0;
     top: 50px;
@@ -198,7 +195,7 @@ h1{
     align-items: left;
     text-align: left;
     justify-content: center;
-    height: 20px;
+    min-height: 20px;
     width: 90%;
     padding: 2.5%;
     margin: 10px auto;
