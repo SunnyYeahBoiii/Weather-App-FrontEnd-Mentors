@@ -5,6 +5,7 @@ const dayOfTheWeekBtn = document.getElementById("forecast-day-btn")
 const searchBar = document.getElementById("search-bar")
 const searchBtn = document.getElementById("search-btn")
 const searchResult = document.getElementById("search-result")
+const weatherForecast = document.getElementById("weather-detail")
 let cityCards = document.querySelectorAll(".city-card")
 
 unitBtn.addEventListener("click" , function(event){
@@ -74,15 +75,14 @@ searchBtn.addEventListener("click" , async (e) => {
     }
 
     cityCards = Array.from(document.querySelectorAll(".city-card"))
-    console.log(cityCards)
 
     cityCards.forEach((cityCard) => {
         cityCard.addEventListener("click" , () => {
             const index = cityCards.findIndex((card) => card == cityCard)
-            latitude = resultArr[index].latitude
-            longitude = resultArr[index].longitude
-            console.log(latitude , longitude)
-            fetchForecastData()
+            latitude = resultArr[index].latitude;
+            longitude = resultArr[index].longitude;
+            fetchForecastData();
+            loadLoadingScreen();
         })
     })
 })
@@ -92,3 +92,8 @@ searchBar.addEventListener("click" , (e) => {
     if(searchResult.classList.contains("hidden"))
         searchResult.classList.toggle("hidden")
 })
+
+function loadLoadingScreen(){
+    if(weatherForecast.classList.contains("hidden"))
+        weatherForecast.classList.toggle("hidden");
+}

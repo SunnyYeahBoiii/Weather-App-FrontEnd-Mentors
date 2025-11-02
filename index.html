@@ -91,17 +91,26 @@
     </div>
   </div>
 
-  <div id = "weather-detail">
-    <div id = "today-board">
-      <div id = "board">
-        <div id = "board-inner-text">
-          <span id = "board-left-text">
-            <p>Berlin, Germany</p>
-            <p>Tuesday, Aug 5, 2025</p>
+  <div class = "hidden" id = "weather-detail">
+    <div id = "today-board" >
+      <div id = "board" class = "skeleton-board">
+        <div id = "loading-text">
+          <div id = "loading-dots">
+            <span class = "loading-dot" style = "--position: 0;"><img src = "./assets/images/Ellipse 1.svg"/></span>
+            <span class = "loading-dot" style = "--position: 1;"><img src = "./assets/images/Ellipse 1.svg"/></span>
+            <span class = "loading-dot" style = "--position: 2;"><img src = "./assets/images/Ellipse 1.svg"/></span>
+          </div>
+          <p>Loading</p>
+        </div>
+
+        <div id = "board-inner-text" class = "hidden">
+          <span id = "board-left-text" class = "skeleton-text">
+            <p></p>
+            <p></p>
           </span>
           <span id = "board-right-text">
-            <img class = "board-icon" src = "./assets/images/icon-sunny.webp"/>
-            <p id = "right-text">20</p>
+            <img class = "board-icon skeleton-image" src = ""/>
+            <p id = "right-text" class = "skeleton-text"></p>
           </span>
         </div>
       </div>
@@ -111,21 +120,21 @@
       <div class = "card-wrapper">
         <div class = "card">
           <p class = "sub-text">Feels like</p>
-          <p class = "temperature-text big-text">10</p>
+          <p class = "temperature-text big-text skeleton-text">_</p>
         </div>
         <div class = "card">
           <p class = "sub-text">Humidity</p>
-          <p class = "humidity-text big-text">10</p>
+          <p class = "humidity-text big-text skeleton-text">_</p>
           <!-- Insert humidity here -->
         </div>
         <div class = "card">
           <p class = "sub-text">Wind</p>
-          <p class = "wind-speed-text big-text">10</p>
+          <p class = "wind-speed-text big-text skeleton-text">_</p>
           <!-- Insert wind here -->   
         </div>
         <div class = "card">
           <p class = "sub-text">Precipitation</p>
-          <p class = "precipitation-text big-text">10</p>
+          <p class = "precipitation-text big-text skeleton-text">_</p>
           <!-- Insert precipitation here -->
   
         </div>
@@ -135,7 +144,79 @@
     <p id = "daily-forecast-text">Daily Forecast</p>
     <div id = "daily-forecast">
       <div class = "card-wrapper">
-
+        
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        <div class = "card">
+          <div class = "card-content hidden">
+            <p class = "day-of-the-week">Mon</p>
+            <img class = "weather-icon" src = "assets/images/icon-rain.webp">
+            <span class = "card-temperature">
+              <p class = "temperature-text">20</p>
+              <p class = "temperature-text">14</p>
+            </span>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
     
@@ -143,36 +224,47 @@
       <div id = "hourly-forecast-ctn">
         <div id = "hourly-forecast-top">
           Hourly forecast
-          <div style = "position: relative;">
+          
+          <div style = "position: relative;" id = "day-of-the-week" class = "hidden">
             <button id = "forecast-day-btn">Monday <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/></button>
             <div class = "hidden" id = "day-of-the-week-board">
-              <input checked type = "radio" name = "forecast-day" id = "forecast-monday" value = "forecast-day-monday"/>
+              <input checked required type = "radio" name = "forecast-day" id = "forecast-monday" value = "forecast-day-monday"/>
               <div class = "label-ctn">
                 <label for = "forecast-monday">Monday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-tuesday" value = "forecast-day-tuesday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-tuesday" value = "forecast-day-tuesday"/>
               <div class = "label-ctn">
               <label for = "forecast-tuesday">Tuesday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-wednesday" value = "forecast-day-wednesday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-wednesday" value = "forecast-day-wednesday"/>
               <div class = "label-ctn">
                 <label for = "forecast-wednesday">Wednesday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-thursday" value = "forecast-day-thursday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-thursday" value = "forecast-day-thursday"/>
               <div class = "label-ctn">
                 <label for = "forecast-thursday">Thursday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-friday" value = "forecast-day-friday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-friday" value = "forecast-day-friday"/>
               <div class = "label-ctn">
                 <label for = "forecast-friday">Friday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-saturday" value = "forecast-day-saturday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-saturday" value = "forecast-day-saturday"/>
               <div class = "label-ctn">
                 <label for = "forecast-saturday">Saturday</label>
               </div>
-              <input type = "radio" name = "forecast-day" id = "forecast-sunday" value = "forecast-day-sunday"/>
+              <input required type = "radio" name = "forecast-day" id = "forecast-sunday" value = "forecast-day-sunday"/>
               <div class = "label-ctn">
                 <label for = "forecast-sunday">Sunday</label>
+              </div>
+            </div>
+          </div>
+
+          <div style = "position: relative;" id = "skeleton-day-board" class = "">
+            <button id = "forecast-day-btn">_ <img style = "width: 10%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/></button>
+            <div class = "hidden" id = "skeleton-day-of-the-week-board">
+              <input type = "radio" name = "forecast-day" id = "forecast-none" value = "forecast-day-none"/>
+              <div class = "label-ctn">
+                <label for = "forecast-none">_</label>
               </div>
             </div>
           </div>

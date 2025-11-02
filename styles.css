@@ -176,6 +176,7 @@ h1{
     border: none;
     border-radius: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #search-result{
@@ -572,15 +573,62 @@ h1{
     background-color: inherit;
     padding: 10px 10px 10px 10px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+#day-of-the-week-board label{
+    cursor: pointer;
+}
+
+#day-of-the-week-board .label-ctn:hover{
+    background-color: hsla(243, 23%, 30% ,0.6);
 }
 
 #day-of-the-week-board .label-ctn label{
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+}
+
+#day-of-the-week-board input:checked + .label-ctn{
+    background-color: hsla(243, 23%, 30% ,0.6);
+}
+
+#skeleton-day-of-the-week-board{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: left;
+    justify-content: space-evenly;
+
+    border-radius: 5px;
+
+    height: 50px;
+    width: 150px;
+    background-color: var(--btn-clr-darker);
+    transform: translateX(calc(-32.5% - 1px));
+    top: 40px;
+
+    z-index: 1;
+}
+
+#skeleton-day-of-the-week-board .label-ctn{
+    width: 80%;
+    margin: 0 auto;
+    /* border: 2px solid red; */
+    background-color: inherit;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+}
+
+#skeleton-day-of-the-week-board .label-ctn label{
     font-size: 0.6rem;
 
     display: flex;
     align-items: center;
 }
 
-#day-of-the-week-board input:checked + .label-ctn{
+#skeleton-day-of-the-week-board input:checked + .label-ctn{
     background-color: hsla(243, 23%, 30% ,0.6);
 }

@@ -1,0 +1,54 @@
+.skeleton-board{
+    background-color: var(--btn-clr) !important;
+    background-image: none !important;
+
+    display:flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#loading-dots{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#loading-dots .loading-dot{
+    display: flex;
+    align-items: center;
+    /* height: 10px; */
+    /* border: 2px solid red; */
+
+    animation: loadingAnimation 1s ease infinite;
+    animation-delay: calc(var(--position)*0.1s);
+}
+
+@keyframes loadingAnimation {
+    0%{
+        transform: translateY(0);
+    }   
+    50%{
+        transform: translateY(-10px);
+    }   
+    100%{
+        transform: translateY(0);
+    }   
+}
+
+#loading-dots .loading-dot img path{
+    fill: white;
+}
+
+.skeleton-image{
+    width: 0px;
+    height: 0px;
+}
+
+.skeleton-text{
+}
+
+.skeleton-text::after{
+    content: "" !important;
+}
