@@ -377,27 +377,41 @@ h1{
     font-size: 0.75rem;
 }
 
+.temperature-text{
+    --content-after: "o"
+}
+
+.humidity-text{
+    --content-after: "%"
+}
+.wind-speed-text{
+    --content-after: "km/h"
+}
+.precipitation-text{
+    --content-after: "mm"
+}
+
 .temperature-text::after{
-    content: "o";
+    content: var(--content-after);
     font-size: 0.5rem;
     position: relative;
     top: -0.5rem;
 }
 
 .humidity-text::after{
-    content: "%";
+    content: var(--content-after);
     font-size: 1rem;
     position: relative;
 }
 
 .wind-speed-text::after{
-    content: "km/h";
+    content: var(--content-after);
     font-size: 1rem;
     position: relative;
 }
 
 .precipitation-text::after{
-    content: "mm";
+    content: var(--content-after);
     font-size: 1rem;
     position: relative;
 }

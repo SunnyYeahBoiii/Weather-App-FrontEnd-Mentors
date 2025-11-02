@@ -20,8 +20,16 @@ const hourlyForecastContent = document.getElementById("hourly-forecast-content")
 
 let cityCards = document.querySelectorAll(".city-card")
 const dailyForecastCards = document.querySelectorAll("#daily-forecast .card-wrapper .card")
-const forecastDays = document.querySelectorAll(".label-ctn");
+const forecastDays = document.querySelectorAll("#hourly-forecast .label-ctn");
 const forecastRadios = document.getElementsByName("forecast-day")
+
+const temperatureRadios = document.getElementsByName("temperature");
+const windSpeedRadios = document.getElementsByName("wind-speed");
+const precipitationRadios = document.getElementsByName("precipitation");
+
+const temperatureTexts = document.querySelectorAll(".temperature-text")
+const precipitationTexts = document.querySelectorAll(".precipitation-text")
+const windSpeedTexts = document.querySelectorAll(".wind-speed-text")
 
 unitBtn.addEventListener("click" , function(event){
     event.stopPropagation();
@@ -59,13 +67,16 @@ let forecastDayOfTheWeek = 0;
 
 forecastDays.forEach((forecastDay) => {
     forecastDay.addEventListener("click" , () => {
+        
+        setTimeout( () => {
         forecastDayBtn.innerHTML = `${forecastDay.textContent}  <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/>`;
         dayOfTheWeekBoard.classList.toggle("hidden");
         loadHourlyForcast(getForecastDay());
+        }, 1);
     })
 });
 
-const getForecastDay = () => {
+function getForecastDay(){
     let count = 0;
     let result = -1;
     forecastRadios.forEach((forecastDay) => {
@@ -75,8 +86,13 @@ const getForecastDay = () => {
         count++;
     });
     forecastDayOfTheWeek = result;
-    return result;
-};
+    console.log(result);
+    return (result + 1) % 7;
+}
+
+function setDayBtn(index){
+    forecastDayBtn.innerHTML = `${dayMap[index]}  <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/>`;
+}
 
 const weatherMap = {
     "0": "sunny",
@@ -144,8 +160,12 @@ function getDateString(today){
 
 let dataObj;
 
+let temperatureUnit = "celsius";
+let windSpeedUnit = "kmh";
+let precipitationUnit = "mm";
+
 async function loadForecastData(){
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&temperature_unit=celsius&current=temperature_2m,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&temperature_unit=${temperatureUnit}&precipitation_unit=${precipitationUnit}&wind_speed_unit=${windSpeedUnit}&current=temperature_2m,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation`;
     dataObj = await fetch(url)
         .then((data) => data.json())
         .catch((err) => console.log("NGU"))
@@ -205,12 +225,25 @@ async function loadForecastData(){
     skeletonDayBoard.classList.add("hidden");
     dayOfTheWeekCtn.classList.remove("hidden");
 
-    console.log(getForecastDay());
+    let currentDate = new Date(dataObj.hourly.time[0]);
+    // currentDate = (currentDate.day - 1 + 7) % 7;
+    let dateIndex = (currentDate.getDay() - 1 + 7) % 7;
+    forecastRadios[dateIndex].checked = true;
+    setDayBtn(currentDate.getDay());
 
     loadHourlyForcast(getForecastDay());
 }
 
-function loadHourlyForcast(index){
+async function loadHourlyForcast(dayIndex){
+    let index = -1;
+    for (let current_index = 0 ; current_index < 7 ; current_index++){
+        let currentDate = new Date(dataObj.hourly.time[current_index * 24]);
+        if(dayIndex === currentDate.getDay())
+            index = current_index;
+    }
+
+    console.log(dayIndex , index);
+        
     let startIndex = index * 24;
     let endIndex = (index + 1) * 24 - 1;
 
@@ -293,3 +326,82 @@ function loadLoadingScreen(){
     if(weatherForecast.classList.contains("hidden"))
         weatherForecast.classList.toggle("hidden");
 }
+
+searchBar.addEventListener("keydown" , (e) => {
+    if(e.key === "Enter"){
+        searchBtn.click();
+    }
+})
+
+temperatureRadios[0].addEventListener("click" , () => {
+    temperatureUnit = "celsius";
+})
+temperatureRadios[1].addEventListener("click" , () => {
+    temperatureUnit = "fahrenheit";
+})
+
+temperatureRadios.forEach( (input) => {
+    input.addEventListener("change" , () => {
+        loadForecastData();
+        console.log("NGU");
+    })
+});
+
+// windSpeedRadios.forEach( (input) => {
+//     const unitArr = ["kmh" , "mph"];
+//     input.addEventListener("change" , () => {
+//         loadForecastData();
+//         console.log("NGU");
+//     })
+// });
+
+windSpeedRadios[0].addEventListener("change" , async () => {
+    windSpeedUnit = "kmh";
+    await loadForecastData();
+    windSpeedTexts.forEach((item) => {
+        item.style.setProperty("--content-after" , '"km/h"');
+    });
+})
+windSpeedRadios[1].addEventListener("change" , async () => {
+    windSpeedUnit = "mph";
+    await loadForecastData();
+    windSpeedTexts.forEach((item) => {
+        item.style.setProperty("--content-after" , '"mph"');
+    });
+})
+
+// precipitationRadios[0].addEventListener("click" , () => {
+//     precipitationUnit = "mm";
+//     precipitationTexts.forEach((item) => {
+//         item.style.setProperty("--content-after" , '"mm"');
+//     });
+// })
+// precipitationRadios[1].addEventListener("click" , () => {
+//     precipitationUnit = "inch";
+//     precipitationTexts.forEach((item) => {
+//         item.style.setProperty("--content-after" , '"inch"');
+//     });
+// })
+
+// precipitationRadios.forEach( (input) => {
+//     const unitArr = ["mm" , "inch"];
+//     let count = 0;
+    
+// });
+
+precipitationRadios[0].addEventListener("change" , async () => {
+    precipitationUnit = "mm";
+    await loadForecastData();
+    precipitationTexts.forEach((item) => {
+        item.style.setProperty("--content-after" , '"mm"');
+    });
+    count++;
+})
+precipitationRadios[1].addEventListener("change" , async () => {
+    precipitationUnit = "inch";
+    await loadForecastData();
+    precipitationTexts.forEach((item) => {
+        item.style.setProperty("--content-after" , '"inch"');
+    });
+    count++;
+})
