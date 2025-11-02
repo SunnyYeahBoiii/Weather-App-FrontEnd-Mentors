@@ -1,6 +1,8 @@
 const unitBoard = document.getElementById("unit-board");
 const unitBtn = document.getElementById("unit-btn");
+const dayOfTheWeekCtn = document.getElementById("day-of-the-week")
 const dayOfTheWeekBoard = document.getElementById("day-of-the-week-board")
+const skeletonDayBoard = document.getElementById("skeleton-day-board")
 const dayOfTheWeekBtn = document.getElementById("forecast-day-btn")
 const searchBar = document.getElementById("search-bar")
 const searchBtn = document.getElementById("search-btn")
@@ -13,10 +15,13 @@ const temperatureCardText = document.getElementById("temperature-card-text");
 const humidityCardText = document.getElementById("humidity-card-text");
 const windSpeedCardText = document.getElementById("wind-speed-card-text");
 const precipitationCardText = document.getElementById("precipitation-card-text");
+const forecastDayBtn = document.getElementById("forecast-day-btn");
+const hourlyForecastContent = document.getElementById("hourly-forecast-content");
 
 let cityCards = document.querySelectorAll(".city-card")
 const dailyForecastCards = document.querySelectorAll("#daily-forecast .card-wrapper .card")
-
+const forecastDays = document.querySelectorAll(".label-ctn");
+const forecastRadios = document.getElementsByName("forecast-day")
 
 unitBtn.addEventListener("click" , function(event){
     event.stopPropagation();
@@ -50,7 +55,28 @@ let latitude = 52.52;
 let longitude = 13.41;
 let cityName = "Vietnam";
 let cityAdmin = "Vietnam";
-let today;
+let forecastDayOfTheWeek = 0;
+
+forecastDays.forEach((forecastDay) => {
+    forecastDay.addEventListener("click" , () => {
+        forecastDayBtn.innerHTML = `${forecastDay.textContent}  <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/>`;
+        dayOfTheWeekBoard.classList.toggle("hidden");
+        loadHourlyForcast(getForecastDay());
+    })
+});
+
+const getForecastDay = () => {
+    let count = 0;
+    let result = -1;
+    forecastRadios.forEach((forecastDay) => {
+        if(forecastDay.checked)
+            result = count;
+        // console.log(forecastDay);
+        count++;
+    });
+    forecastDayOfTheWeek = result;
+    return result;
+};
 
 const weatherMap = {
     "0": "sunny",
@@ -116,9 +142,11 @@ function getDateString(today){
     return `${dayMap[today.getDay()]}, ${monthMap[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
 }
 
+let dataObj;
+
 async function loadForecastData(){
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&temperature_unit=celsius&current=temperature_2m,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation&daily=weather_code,temperature_2m_max,temperature_2m_min&&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation`;
-    let dataObj = await fetch(url)
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&temperature_unit=celsius&current=temperature_2m,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&&minutely_15=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation`;
+    dataObj = await fetch(url)
         .then((data) => data.json())
         .catch((err) => console.log("NGU"))
 
@@ -173,6 +201,42 @@ async function loadForecastData(){
 
         count++;
     });
+
+    skeletonDayBoard.classList.add("hidden");
+    dayOfTheWeekCtn.classList.remove("hidden");
+
+    console.log(getForecastDay());
+
+    loadHourlyForcast(getForecastDay());
+}
+
+function loadHourlyForcast(index){
+    let startIndex = index * 24;
+    let endIndex = (index + 1) * 24 - 1;
+
+    // hourlyForecastContent
+
+    console.log(hourlyForecastContent);
+    hourlyForecastContent.innerHTML = ``;
+
+    for (let current_index = startIndex ; current_index <= endIndex ; current_index++){
+        let currentTime = new Date(dataObj.hourly.time[current_index]);
+        currentTime = currentTime.getHours();
+        let timeText = `${(currentTime <= 12) ? `${currentTime}AM` : `${currentTime - 12}PM`}`;
+
+        hourlyForecastContent.innerHTML += `
+            <div class = "hour-card">
+                <div class = "hour-card-content">
+                <span class = "weather-text">
+                    <img class = "weather-icon" src = "assets/images/icon-${getWeather(dataObj.hourly.weather_code[current_index])}.webp"/>
+                    <p>${timeText}</p>
+                </span>
+
+                <p class = "temperature-text">${dataObj.hourly.temperature_2m[current_index]}</p>
+                </div>
+            </div>
+        `;
+    }
 }
 
 async function updateSearchResult(e){
