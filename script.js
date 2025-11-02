@@ -274,8 +274,15 @@ async function loadHourlyForcast(dayIndex){
 
 async function updateSearchResult(e){
     e.stopPropagation();
+
     if(searchResult.classList.contains("hidden"))
         searchResult.classList.toggle("hidden")
+
+    searchResult.innerHTML = `
+        <div class = "loading-card">
+          <h2 class = "loading-text">Loading</h2>
+        </div>
+    `;
 
     const location_name = searchBar.value;
     const url = `https://geocoding-api.open-meteo.com/v1/search?name=${location_name}`

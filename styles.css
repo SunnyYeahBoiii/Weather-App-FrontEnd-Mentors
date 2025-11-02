@@ -203,6 +203,20 @@ h1{
     border-radius: 10px;
 }
 
+.loading-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    min-height: 20px;
+    width: 90%;
+    padding: 2.5%;
+    margin: 10px auto;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
 .city-card:first-of-type{
     margin-top: 10px;
 }
@@ -616,44 +630,5 @@ h1{
 }
 
 #day-of-the-week-board input:checked + .label-ctn{
-    background-color: hsla(243, 23%, 30% ,0.6);
-}
-
-#skeleton-day-of-the-week-board{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    align-items: left;
-    justify-content: space-evenly;
-
-    border-radius: 5px;
-
-    height: 50px;
-    width: 150px;
-    background-color: var(--btn-clr-darker);
-    transform: translateX(calc(-32.5% - 1px));
-    top: 40px;
-
-    z-index: 1;
-}
-
-#skeleton-day-of-the-week-board .label-ctn{
-    width: 80%;
-    margin: 0 auto;
-    /* border: 2px solid red; */
-    background-color: inherit;
-    padding: 10px 10px 10px 10px;
-    border-radius: 5px;
-}
-
-#skeleton-day-of-the-week-board .label-ctn label{
-    font-size: 0.6rem;
-
-    display: flex;
-    align-items: center;
-}
-
-#skeleton-day-of-the-week-board input:checked + .label-ctn{
     background-color: hsla(243, 23%, 30% ,0.6);
 }

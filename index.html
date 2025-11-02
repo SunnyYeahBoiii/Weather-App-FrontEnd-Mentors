@@ -90,7 +90,9 @@
       <button type = "button" id = "search-btn">Search</button>
 
       <div id = "search-result" class = "hidden">  
-        <h2>Nothing to see here..</h2>
+        <div class = "loading-card">
+          <h2>Nothing to see here</h2>
+        </div>
       </div>
     </div>
   </div>
@@ -215,7 +217,9 @@
           </div>
 
           <div style = "position: relative;" id = "skeleton-day-board" class = "">
-            <button id = "forecast-day-btn">_ <img style = "width: 10%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/></button>
+            <div id = "btn-ctn">
+              <button id = "forecast-day-btn">_ <img style = "width: 30%; height: 30%;" src = "./assets/images/icon-dropdown.svg"/></button>
+            </div>
             <div class = "hidden" id = "skeleton-day-of-the-week-board">
               <input type = "radio" name = "forecast-day" id = "forecast-none" value = "forecast-day-none"/>
               <div class = "label-ctn">
@@ -230,14 +234,7 @@
       </div>
     </div>
   </div>
-
-
   </div>
-
-  
-  
-  
-  
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
