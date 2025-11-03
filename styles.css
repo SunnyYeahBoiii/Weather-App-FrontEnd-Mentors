@@ -3,7 +3,7 @@
     --btn-clr-darker: hsl(243, 27%, 20%);
     --btn-clr: hsl(243, 23%, 24%);
     --btn-clr-lighter: hsl(243, 23%, 30%);
-    --btn-clr-lighter-lighter: hsl(240, 6%, 70%);
+    --btn-clr-lighter-lighter: hsl(240, 6%, 30%);
     --blue: hsl(248, 70%, 36%);
     --blue-lighter: hsl(233, 67%, 56%);
     --width: min(1000px , 90vw)
